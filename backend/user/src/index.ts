@@ -3,8 +3,10 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js"; 
 import {createClient} from "redis";
 import userRoutes from "./routes/user.route.js"
+import { connectRabbitMQ } from "./config/rabitmq.js";
 dotenv.config();
 connectDB();
+connectRabbitMQ();
 
 if(!process.env.REDIS_URL){
     throw new Error("REDIS_URL is not defined in Environment variables")
